@@ -1,0 +1,416 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <title>Smash Viewer</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 10pt;
+            padding-top: 60px;
+        }
+        hr {
+            border: none;
+            height: 1px;
+            color: #333; /* old IE */
+            background-color: #333; /* Modern Browsers */
+            clear:both;
+        }
+        .postcounter {
+            float: left;
+            font-size: 25pt;
+            font-weight: bold;
+            font-family: fantasy;
+            color: navy;
+            opacity: 0.15;
+            filter: alpha(opacity=15);
+            /*z-index: 1;
+            position: relative;
+            top: -2px;*/
+        }
+        img {
+            border: 1px solid black;
+        }
+        p.body-line {
+            margin: 0px;
+            white-space: pre-wrap;
+        }
+        .topBorder {
+            border-top: 1px solid black;
+        }
+        .postImage {
+            /*float: left;
+            border: 1px solid black;
+            margin: 5px 5px 10px 0px;*/
+            clear: left;
+        }
+        header a {
+            float:right;
+        }
+        .text {
+            /*white-space: pre;*/
+            word-wrap: break-word;
+            clear: left;
+        }
+        .tweetDelta {
+            /*
+            background-color: #00aced;
+            margin: 2px;
+            background-image: url("https://m-uhm.sodexomyway.com/images/twittericon_tcm641-2576.png");
+            width: 25px;
+            height: 25px;
+            padding: 3px 0px;
+            font-size: 12pt;
+            */
+            color: #000000;
+            float:right;
+            
+            clear: right;
+            /*position: relative;
+            margin-left: 15px;*/
+        }
+        .tweetDelta::before {
+            color: #00aced;
+            font-size: 15pt;
+            font-family: 'FontAwesome';
+            /*position: absolute;
+            left: -10px;
+            top: -15px;
+            z-index: -1;
+            */
+            position: relative;
+            top: -5px;
+            content: "\f099";
+        }
+
+        .name, .trip, time {
+            /*clear: left;*/
+            /*position: relative;
+            top: 2px;*/
+        }
+        .trip {
+            margin-left:1px;
+            margin-right: 5px;
+        }
+        .reference {
+            border: 1px solid black;
+            background: lightgray;
+            /*opacity: 0.5;*/
+            /*filter: alpha(opacity=50);*/
+            display: none; /*inline-block*/
+            padding: 10px;
+            /*position: relative;
+            left: 50px;*/
+        }
+        .referencediv {
+            clear: left;
+        }
+        .referencedivlink {
+            cursor: pointer;
+        }
+        .maindiv {
+            position: relative;
+            left: 2px;
+            top: 5px;
+            /*z-index: 5;*/
+        }
+        article {
+            /*z-index: 5;*/
+            clear:both;
+            /*border-top: 1px solid black;*/
+            margin: 0px 5px 5px 5px;
+            padding-bottom:5px;
+        }
+        header {
+            /*position: relative;
+            top: 5px;
+            left: 5px;*/
+        }
+        time {
+            margin-right: 5px;
+            font-weight: bolder;
+            opacity: 0.50;
+            filter: alpha(opacity=50);
+            top: -2px;
+            position: relative;
+        }
+        #derp {
+            font-size:8pt;
+        }
+    </style>
+    <script type="text/javascript">
+/*
+[
+    {
+    "source": "4chan_pol",
+    "threadId": 146981635,
+    "link": "https://archive.4plebs.org/pol/thread/146981635/#147012719",
+    "imageLinks": [
+          {
+            "url": "https://media.8ch.net/file_store/OriginalImage.png"
+          },
+          {
+            "url": "https://media.8ch.net/file_store/OriginalImage.png/ClipboardImage.png"
+          }
+        ],
+        "references": [
+          {
+            "source": "qresearch",
+            "threadId": 0,
+            "link": "https://8ch.net/qresearch/res/0.html#299248",
+            "imageLinks": [],
+            "references": [],
+            "no": 299248,
+            "uniqueId": "26b953bd-63ff-4628-bdde-56e4780bd07f",
+            "_unixEpoch": "1970-01-01T00:00:00Z",
+            "text": "\r\r>>299164\r\rhttps:// twitter.com/seanhannity/status/961415975626330112\r\r\r@2046\r\rFBI informant on Uranium One Breaks Silence Today\r\rhttps:// saraacarter.com/fbi-informant-uranium-one-breaks-silence-today/",
+            "postDate": "2018-02-07T20:48:59",
+            "time": 1518054539,
+            "tn_h": 0,
+            "tn_w": 0,
+            "h": 0,
+            "w": 0,
+            "tim": null,
+            "fsize": 0,
+            "filename": null,
+            "ext": null,
+            "md5": null,
+            "last_modified": 1518054539,
+            "sub": null,
+            "com": "<p class=\"body-line ltr \"><a onclick=\"highlightReply('299164', event);\" href=\"/qresearch/res/298889.html#299164\">&gt;&gt;299164</a></p><p class=\"body-line ltr \">https:// twitter.com/seanhannity/status/961415975626330112</p><p class=\"body-line empty \"></p><p class=\"body-line ltr \">@2046</p><p class=\"body-line ltr \">FBI informant on Uranium One Breaks Silence Today</p><p class=\"body-line ltr \">https:// saraacarter.com/fbi-informant-uranium-one-breaks-silence-today/</p>",
+            "name": "Anonymous",
+            "trip": null,
+            "replies": 0
+          }
+        ],
+    "no": 147012719,
+    "uniqueId": "554fd19d-0803-4108-b54d-34f804586b47",
+    "_unixEpoch": "1970-01-01T00:00:00Z",
+    "text": ">>147005381\nHRC extradition already in motion effective yesterday with several countries in case of cross border run. Passport approved to be flagged effective 10/30 @ 12:01am. Expect massive riots organized in defiance and others fleeing the US to occur. US M’s will conduct the operation while NG activated. Proof check: Locate a NG member and ask if activated for duty 10/30 across most major cities.",
+    "postDate": "2017-10-28T16:44:28",
+    "time": 1509223468,
+    "tn_h": 0,
+    "tn_w": 0,
+    "h": 0,
+    "w": 0,
+    "tim": "OriginalImage",
+    "fsize": 708227,
+    "filename": "ClipboardImage",
+    "ext": ".png",
+    "md5": null,
+    "last_modified": 0,
+    "sub": null,
+    "com": null,
+    "name": "Anonymous",
+    "trip": null,
+    "replies": 0
+    }
+]
+*/
+    var $json;
+    function formatPosts() {
+        var $content = $("#content");
+        var $time = $("#time");
+        var $tweets = $("#tweets");
+        var counter = $json.length;
+        // iterate each DOTC
+        //$json.reverse();
+        // Do the custom grouping?
+        $($json).each( function (key, value) {
+            
+            // Iterate the posts
+            var $row = $("<div class='row topBorder'></div>");
+            var $col = $("<div class='col'></div>");
+            var $article = $("<article class='dayOnTheChan'></article>")
+            //$.each(value.Value.smashPosts, function (spKey, spValue) {
+            //    debugger;
+            //    $article.append("<div class='postcounter' title='UniqueId: " + spValue.uniqueId + "'>" + counter + "</div>");
+            //    $article.append(formatPost(spValue, true));
+            //    $col.append($article);
+            //    $row.append($col);
+            //});
+
+            var $article = $("<article class='source_8chan_qresearch'></article>").append("<div class='postcounter' title='UniqueId: " + value.uniqueId + "'>" + counter + "</div>");
+            $article.append(formatPost(value, true));
+            $col.append($article);
+            $row.append($col);
+
+//            var $timeCol = $("<div class='col-md-2'>time</div>");
+//            $row.append($timeCol);
+
+//            var $twitterCol = $("<div class='col-md-5'>twitter</div>");
+//            $row.append($twitterCol);
+
+            $content.append($row);
+            counter--;
+            //counter++;
+        });
+
+        function formatPost(value, findreferences) {
+            var $maindiv = $("<div id='" + value.uniqueId + "' class='maindiv'></div>");
+            var $header = $("<header title='source: "+value.source+"'></header>");
+            $header.append("<a href='" + value.link + "' target='_blank'>" + value.no + "</a>");
+            $header.append("<span class='name'>" + value.name + " </span>");
+            if (value.trip != null) $header.append("<span class='trip'>" + value.trip + "</span>");
+            $header.append("<br/><time>" + value.postDate + "</time>")
+
+            if (value.title != null) $header.append("<span class='title' title='title'>" + value.sub + "</span>");
+
+            if ((value.DJTtwitterPosts != null) && (value.DJTtwitterPosts.length > 0)) {
+//                debugger;
+//                var wtf = "123";
+                $.each(value.DJTtwitterPosts, function () {
+                    debugger;
+                    $header.append("<div class='tweetDelta'><a href='" + this.link + "' title='" + this.text + "' target='_new'>&Delta;" + this.delta + "</a></div>")
+                    //<i class='fa fa-twitter' style='font-size:48px; color: #00aced;'></i>
+                });
+                
+            }
+
+            $maindiv.append($header);
+            //Check for references
+            if ((findreferences === true) && (value.references.length > 0)) {
+                // Insert the hover div
+                var $refdiv = $("<div class='referencediv'></div>");
+                //var $refLink = $("<div class='referencedivlink'>>>" + value.references[0].no + "</div>").hover(
+                var $refLink = $("<a class='referencedivlink'>>>" + value.references[0].no + "</a>").hover(
+                    function () {
+                        $("#r_" + value.references[0].uniqueId).fadeIn(500).css("display", "block");
+                    }
+                );
+                $refdiv.append($refLink);
+                $maindiv.append($refdiv);
+                // Insert the reference itself with some hover magic
+                // TODO only showing the first reference? Remove the >>123456 from .text?
+                var $ref = $("<div class='reference' id='r_" + value.references[0].uniqueId + "'></div>").hover(
+                    function () {
+                        $("#r_" + value.references[0].uniqueId).css("display", "block");
+                    },
+                    function () {
+                        $("#r_" + value.references[0].uniqueId).fadeOut(500);
+                    }
+                );
+                $ref.append(formatPost(value.references[0], false));
+                $maindiv.append($ref);
+            }
+
+            if ((value.imageLinks != null) && (value.imageLinks.length > 0)) {
+                var $img = $("<div class='postImage'></div>").append("<img src='" + value.imageLinks[0].url + "' height='255px'/>");
+                $maindiv.append($img);
+            }
+            //Output the text or com?
+            if (value.text != null) {
+                var parsed = value.text.replace(/(?!^)(\r\n|\n|\r\r|\r)/gm, "<br/>");
+                // remove reference link if it's there
+                if (value.references.length > 0)
+                    parsed = parsed.replace(/(^)/gm, "");
+                $maindiv.append("<div class='text'>" + parsed + "</div>");
+            } else {
+                $maindiv.append("<div class='text'>" + value.com + "</div>"); // reference links no workie if viewing source 8ch json
+            }
+            return $maindiv;
+        }
+    }
+
+    function openFile(event) {
+        var result;
+        var input = event.target;
+        var reader = new FileReader();
+        var $derp = $("#derp");
+        $derp.empty().append("MAGA Generating. Please wait...<br/>");
+        $("#content").empty();
+        reader.onload = function () {
+            $derp.empty().append("Warming the rabbits...<br/>");
+            result = reader.result;
+            $derp.append("Parsing JSON...<br/>");
+            $json = JSON.parse(result);
+            //json = json.reverse();// newest first
+        };
+        reader.onloadend = function () {
+            $derp.append("Formatting posts...")
+            formatPosts();
+            $derp.append("Done!")
+            //WTF am I doing?
+            setTimeout(function () {
+                $derp.fadeOut(500, function () {
+                    $derp.empty();
+                    $derp.fadeIn();
+                });
+            }, 2000);
+        };
+        $derp.append("Reading local file...<br/>");
+        reader.readAsText(input.files[0]);
+    };
+    </script>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Smash Viewer</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li style="margin-top:15px;"><input type='file' accept='application/json' onchange='openFile(event)'></li>
+                    <li><div id="derp"></div></li>
+                    <!--
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                    -->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a id="sortToggle" class="glyphicon glyphicon-chevron-down">Sort</a></li> 
+                    <!--
+                    <li><a href="../navbar/">Default</a></li>
+                    <li><a href="../navbar-static-top/">Static top</a></li>
+                    <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+                        -->
+                </ul>
+            </div><!--/.nav-collapse -->
+            
+        </div>
+    </nav>
+    <div class="container">
+        <!--<div class="row">
+            <div class="col">
+                <div id="derp"></div>
+            </div>
+        </div>-->
+        <div class="row">
+            <div id="content" class="col-md"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -221,6 +221,14 @@
 ]
 */
     var $json;
+    $(document).ready(function(){
+        $.getJSON("https://raw.githubusercontent.com/QCodeFagNet/SmashViewer/master/json/_allSmashPosts.json", function(result){
+            //alert(result);
+            //$json = JSON.parse(result);
+            $json = result;
+        });
+    });    
+        
     function formatPosts() {
         var $content = $("#content");
         var $time = $("#time");
@@ -336,8 +344,8 @@
             $derp.empty().append("Warming the rabbits...<br/>");
             result = reader.result;
             $derp.append("Parsing JSON...<br/>");
-            $json = JSON.parse(result);
-            //json = json.reverse();// newest first
+            //$json = JSON.parse(result);
+            
         };
         reader.onloadend = function () {
             $derp.append("Formatting posts...")

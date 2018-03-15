@@ -84,7 +84,19 @@
             margin-left: 1px;
             margin-right: 5px;
         }
-
+        .tweetDelta {
+            color: #000000;
+            float:right;
+            clear: right;
+       }
+        .tweetDelta::before {
+            color: #00aced;
+            font-size: 15pt;
+            font-family: 'FontAwesome';
+            position: relative;
+            top: -5px;
+            content: "\f099";
+       }
         .reference {
             border: 1px solid black;
             background: lightgray;
@@ -133,7 +145,7 @@
 
         #derp {
             font-size: 8pt;
-        }
+       }
     </style>
     <script type="text/javascript">
     var $json;

@@ -16,72 +16,75 @@
     <title>Smash Viewer</title>
 </head>
 <body>
-    <style>
+   <style>
         body {
             font-family: 'Roboto', sans-serif;
             font-size: 10pt;
             padding-top: 60px;
         }
+
         hr {
             border: none;
             height: 1px;
             color: #333; /* old IE */
             background-color: #333; /* Modern Browsers */
-            clear:both;
+            clear: both;
         }
+
         .postcounter {
             float: left;
-            font-size: 25pt;
+            font-size: 28pt;
             font-weight: bold;
             font-family: fantasy;
             color: navy;
             opacity: 0.15;
             filter: alpha(opacity=15);
+            /*z-index: 1;
+                position: relative;
+                top: -2px;*/
+            position: relative;
+            top: -7px;
+            margin-right: 2px;
         }
+
         img {
             border: 1px solid black;
         }
+
         p.body-line {
             margin: 0px;
             white-space: pre-wrap;
         }
-        .topBorder {
-            border-top: 1px solid black;
-        }
+
         .postImage {
             /*float: left;
-            border: 1px solid black;
-            margin: 5px 5px 10px 0px;*/
+                border: 1px solid black;
+                margin: 5px 5px 10px 0px;*/
             clear: left;
         }
+
         header a {
-            float:right;
+            float: right;
         }
+
         .text {
             /*white-space: pre;*/
             word-wrap: break-word;
             clear: left;
         }
-        .tweetDelta {
-            color: #000000;
-            float:right;
-            clear: right;
-        }
-        .tweetDelta::before {
-            color: #00aced;
-            font-size: 15pt;
-            font-family: 'FontAwesome';
-            position: relative;
-            top: -5px;
-            content: "\f099";
-        }
 
         .name, .trip, time {
+            /*
+            position: relative;
+            top: 2px;
+            */
         }
+
         .trip {
-            margin-left:1px;
+            margin-left: 1px;
             margin-right: 5px;
         }
+
         .reference {
             border: 1px solid black;
             background: lightgray;
@@ -90,42 +93,46 @@
             display: none; /*inline-block*/
             padding: 10px;
             /*position: relative;
-            left: 50px;*/
+                left: 50px;*/
         }
+
         .referencediv {
             clear: left;
         }
+
         .referencedivlink {
             cursor: pointer;
+        }
+        .searchdiv article {
+            border: 1px solid black;
+            background: #fffff0;
+            padding: 5px;
+            width: 100%;
         }
         .maindiv {
             position: relative;
             left: 2px;
             top: 5px;
-            /*z-index: 5;*/
         }
+
         article {
-            /*z-index: 5;*/
-            clear:both;
-            /*border-top: 1px solid black;*/
-            margin: 0px 5px 5px 5px;
-            padding-bottom:5px;
+            border-top: 1px solid black;
+            margin: 10px;
+            display: inline-table;
+            width: 350px;
+            background: #f0f8ff;
+            padding: 5px;
         }
-        header {
-            /*position: relative;
-            top: 5px;
-            left: 5px;*/
-        }
+
         time {
             margin-right: 5px;
             font-weight: bolder;
             opacity: 0.50;
             filter: alpha(opacity=50);
-            top: -2px;
-            position: relative;
         }
+
         #derp {
-            font-size:8pt;
+            font-size: 8pt;
         }
     </style>
     <script type="text/javascript">
@@ -165,36 +172,24 @@
         $($json).each( function (key, value) {
             
             // Iterate the posts
-            var $row = $("<div class='row topBorder'></div>");
-            var $col = $("<div class='col'></div>");
-            //var $article = $("<article class='dayOnTheChan'></article>")
-            //$.each(value.Value.smashPosts, function (spKey, spValue) {
-            //    debugger;
-            //    $article.append("<div class='postcounter' title='UniqueId: " + spValue.uniqueId + "'>" + counter + "</div>");
-            //    $article.append(formatPost(spValue, true));
-            //    $col.append($article);
-            //    $row.append($col);
-            //});
-
-            var $article = $("<article></article>").append("<div class='postcounter' title='UniqueId: " + value.uniqueId + "'>" + counter + "</div>");
-            $article.append(formatPost(value, true));
-            $col.append($article);
-            $row.append($col);
-
-//            var $timeCol = $("<div class='col-md-2'>time</div>");
-//            $row.append($timeCol);
-
-//            var $twitterCol = $("<div class='col-md-5'>twitter</div>");
-//            $row.append($twitterCol);
-
-            $content.append($row);
+            //var $row = $("<div class='row topBorder'></div>");
+            //var $col = $("<div class='col'></div>");
+            //var $article = $("<article></article>").append("<div class='postcounter' title='UniqueId: " + value.uniqueId + "'>" + counter + "</div>");
+            //$article.append(formatPost(value, true));
+            //$col.append($article);
+            //$row.append($col);
+            //$content.append($row);
+            var $article = $("<article></article>");
+            $article.append(formatPost(counter, value, true));
+            $("#content").append($article);
             counter--;
         });
 
-        function formatPost(value, findreferences) {
+        function formatPost(keyId, value, findreferences) {
             var $maindiv = $("<div id='" + value.uniqueId + "' class='maindiv'></div>");
             var $header = $("<header title='source: "+value.source+"'></header>");
             $header.append("<a href='" + value.link + "' target='_blank'>" + value.no + "</a>");
+            $header.append("<div class='postcounter' title='UniqueId: " + value.uniqueId + "'>" + keyId + " </div>");
             $header.append("<span class='name'>" + value.name + " </span>");
             if (value.trip != null) $header.append("<span class='trip'>" + value.trip + "</span>");
             $header.append("<br/><time>" + value.postDate + "</time>")
